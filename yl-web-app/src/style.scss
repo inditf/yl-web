@@ -10,14 +10,12 @@
     line-height: 1.5;
     overflow: hidden;
 
-    //登录页面
     .auth {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-        // background-color: white;
+        height: 90vh;
 
         h1 {
             font-size: 20px;
@@ -25,26 +23,33 @@
             margin-bottom: 20px;
         }
 
-        form {
+        .login-form {
             display: flex;
             flex-direction: column;
             padding: 50px;
             background-color: white;
-            width: 200px;
-            gap: 20px;
+            width: 300px;
+            // gap: 20px;
 
             input {
                 padding: 10px;
                 border: none;
                 border-bottom: 1px solid gray;
+                border-radius: 6px;
             }
 
-            button {
+            .sub-button {
                 padding: 10px;
                 border: none;
                 background-color: teal;
                 cursor: pointer;
                 color: white;
+                width: 200px;
+
+                text-align: center;
+                justify-content: center;
+                display: flex;
+                align-items: center;
             }
 
             span {
@@ -73,5 +78,19 @@
                 }
             }
         }
+    }
+
+    .footer {
+        width: 100%;
+        height: 3vh;
+        font-size: 10px;
+        font-family: Microsoft YaHei;
+        font-weight: 300;
+        color: #151830;
+        background: none;
+        bottom: 34px;
+        left: 0;
+        position: absolute;
+        text-align: center;
     }
 }

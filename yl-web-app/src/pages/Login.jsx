@@ -1,21 +1,38 @@
+import { Form, Input, Button, Row, Col } from 'antd';
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Footer } from 'antd/lib/layout/layout';
+
+const onFinish = (values) => {
+    setTimeout(() => {
+        console.log("Received values of Login form: ", values);
+    }, 2000);
+}
+
 const Login = () => {
     return (
-        <div className="auth">
-            <h1>Login Page</h1>
-            <form>
-                <input type="text" placeholder="username" />
-                <input type="password" placeholder="password" />
-                <button>登录</button>
-                <span>
-                    <p className="tips">Don't you have an account </p>
-                    {/* <Link to="/register">Register</Link> */}
-                    <p className="error">Error!</p>
-                </span>
-
-            </form>
-        </div>
+        <>
+            <div className="auth">
+                <h1>Login Page</h1>
+                <Form className="login-form" initialValues={{ remember: true }} onFinish={onFinish}>
+                    <Form.Item name="username" rules={[{ required: true, message: '请输入用户名!' }]}>
+                        <Input type="text" placeholder="username" />
+                    </Form.Item>
+                    <Form.Item name="userpassword" rules={[{ required: true, message: '请输入密码!' }]}>
+                        <Input type="password" placeholder="password" />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button className="sub-button" type="primary" htmlType="submit" >登录</Button>
+                    </Form.Item>
+                    <span>
+                        <p className="tips">Don't you have an account </p>
+                        <Link to="/register">Register</Link>
+                        <p className="error">Error!</p>
+                    </span>
+                </Form >
+            </div >
+            <Footer className="footer">React + Ant Design ©2023 Created by Ant UED</Footer>
+        </>
 
     );
 }
