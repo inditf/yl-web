@@ -1,7 +1,6 @@
 import { Form, Input, Button, Row, Col } from 'antd';
 import React from "react";
 import { Link } from "react-router-dom";
-import { Footer } from 'antd/lib/layout/layout';
 
 const onFinish = (values) => {
     setTimeout(() => {

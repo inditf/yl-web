@@ -22,7 +22,6 @@ const router = createHashRouter([
     path: "/",
     element: <Layout />,
     children: [
-
       {
         path: "/register",
         element: <Register />,
