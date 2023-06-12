@@ -1,7 +1,7 @@
 import { Form, Input, Button, Row, Col } from 'antd';
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./Register.less"
 const onFinish = (values) => {
     setTimeout(() => {
         console.log("Received values of Register form: ", values);
