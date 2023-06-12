@@ -1,18 +1,18 @@
-// import style from './style.less';
-import './style.scss';
+import './style.less';
 import {
   createHashRouter,
   RouterProvider,
   Outlet,
 } from "react-router-dom";
-import { Footer } from 'antd/lib/layout/layout';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import Foot from "./compoent/Footer/Footer"
+
 const Layout = () => {//
   return (
     <>
       <Outlet />
-      <Footer className="footer">React + Ant Design ©2023 Created by Ant UED</Footer>
+      <Foot />
     </>
   );
 };
