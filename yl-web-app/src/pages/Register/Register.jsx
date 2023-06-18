@@ -22,7 +22,7 @@ const Register = () => {
                 <Form.Item name="user-password" rules={[{ required: true, message: '请设置密码!' }]}>
                     <Input type="password" placeholder="password" />
                 </Form.Item>
-                <Form.Item name="user-repassword" rules={[{ required: true, message: '请设置密码!' }]}>
+                <Form.Item name="user-repassword" rules={[{ required: true, message: '请重复密码!' }]}>
                     <Input type="password" placeholder="confirm password" />
                 </Form.Item>
                 <Form.Item>
@@ -31,7 +31,6 @@ const Register = () => {
                 <span>
                     <p className="tips">Do you have an account?</p>
                     <Link to="/login">  Log in</Link>
-                    <p className="error">Error!</p>
                 </span>
             </Form >
         </div>

@@ -3,7 +3,7 @@ import React from "react";
 import style from "./Footer.module.less";
 const Foot = () => {
     return (
-        <Footer className={style.footer}>React + Ant Design ©2023 Created by Ant UED</Footer>
+        <Footer className={style.footer}>Created by React + Ant Design ©2023</Footer>
     )
 }
 export default Foot;

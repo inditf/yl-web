@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Home from "./pages/Home/Home";
+
 import Foot from "./compoent/Footer/Footer"
 
 const Layout = () => {//
@@ -33,7 +35,12 @@ const router = createHashRouter([
       {
         path: "/",
         element: <Login />,
-      },]
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ]
   }
 ]);
 
