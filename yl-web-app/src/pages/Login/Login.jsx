@@ -1,10 +1,10 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import React from "react";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import "./Login.less";
 import ajax from "../../ajax.js";
-import axios from 'axios'
+import axios from 'axios';
 
 
 const postUrl = 'http://127.0.0.1:7001/jwtlogin';
@@ -33,7 +33,18 @@ const Login = () => {
                             'token': token,
                         }
                     })
-                    .then(res => { console.log("code is " + res.data.code + " " + res.data.msg) });
+                    .then(res => {
+                        console.log("code is " + res.data.code + " " + res.data.msg)
+                        if (res.data.code == 2000) {
+                            // alert("登录成功");
+                            message.success("登录成功")
+                        }
+                        else {
+                            // alert("账号或密码错误");
+                            message.error("账号或密码错误");
+                        }
+                    });
+
             });
 
     }
