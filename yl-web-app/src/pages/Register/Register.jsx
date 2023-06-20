@@ -1,5 +1,4 @@
-import { Form, Input, Button, Row, Col } from 'antd';
-import React from "react";
+import { Form, Input, Button } from 'antd';
 import { Link } from "react-router-dom";
 import "./Register.less"
 const onFinish = (values) => {

@@ -3,6 +3,7 @@ import {
   createHashRouter,
   RouterProvider,
   Outlet,
+  Navigate,
 } from "react-router-dom";
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
@@ -19,7 +20,6 @@ const Layout = () => {//
   );
 };
 const router = createHashRouter([
-
   {
     path: "/",
     element: <Layout />,
@@ -34,7 +34,7 @@ const router = createHashRouter([
       },
       {
         path: "/",
-        element: <Login />,
+        element: < Navigate to='/login' />,
       },
       {
         path: "/home",

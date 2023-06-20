@@ -1,22 +1,27 @@
 import { Form, Input, Button, message } from 'antd';
-import React from "react";
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.less";
 import ajax from "../../ajax.js";
 import axios from 'axios';
 
+// import { useToken } from "../../provider/tokenProvider";
+import { useAuth } from "./authProvider";
 
-const postUrl = 'http://127.0.0.1:7001/jwtlogin';
+
+// const postUrl = 'http://127.0.0.1:7001/jwtlogin';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [userpassword, setUserpassword] = useState("");
     // const [token, setToken] = useState("");
+    // const { } = useAuth();
+    // const [token, setToken] = useAuth(" ");
     let token = null;
-    const checkLogin = () => {
+    // const checkLogin = () => {
 
-    }
+    // }
     const onFinish = () => {
         ajax("http://127.0.0.1:7001/jwtlogin", { username: username, password: userpassword }, 'POST')
             .then(res => {
@@ -35,12 +40,11 @@ const Login = () => {
                     })
                     .then(res => {
                         console.log("code is " + res.data.code + " " + res.data.msg)
-                        if (res.data.code == 2000) {
-                            // alert("登录成功");
+                        if (res.data.code === 2000) {
                             message.success("登录成功")
+                            navigate("/home", { replace: true });
                         }
                         else {
-                            // alert("账号或密码错误");
                             message.error("账号或密码错误");
                         }
                     });
@@ -71,7 +75,7 @@ const Login = () => {
                         className="sub-button"
                         type="primary"
                         htmlType="submit"
-                        onClick={checkLogin}
+                    // onClick={checkLogin}
                     >
                         登录
                     </Button>

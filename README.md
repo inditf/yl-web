@@ -8,8 +8,8 @@
 无后台报错: `Network Error`  
 默认账号密码：`admin` `123456`
 ## `Usage`
-[`React`]( https://react.docschina.org/docs/getting-started.html)  
-[`React Router`]((https://reactrouter.com/en/main))  
+[`React`](https://react.docschina.org/)  
+[`React Router`](https://reactrouter.com/en/main)  
 [`Antd`](https://ant.design/docs/react/introduce)   
 [`Less`](https://less.bootcss.com/)  
 
