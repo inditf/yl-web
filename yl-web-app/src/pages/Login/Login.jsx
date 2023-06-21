@@ -54,8 +54,10 @@ const Login = () => {
                 </Form.Item>
                 <span>
                     <p className="tips">Don't you have an account </p>
-                    <Link to="/register">Register</Link>  <br />
-                    <Link to="/home">Home</Link>
+                    <Link to="/register">Register</Link>
+                    <br />
+                    <Link to="/home"><strong>Home</strong></Link>
+
                 </span>
             </Form >
         </div >

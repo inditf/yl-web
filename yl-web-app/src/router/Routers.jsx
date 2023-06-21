@@ -1,9 +1,10 @@
-import { RouterProvider, createHashRouter, Navigate } from "react-router-dom";
+import { RouterProvider, createHashRouter, Navigate, Outlet } from "react-router-dom";
 import { useToken } from "../provider/tokenProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../pages/Login/Login";
 import Home from "../pages/Home/Home";
 import Register from "../pages/Register/Register";
+import Foot from "../compoent/Footer/Footer";
 
 const Routes = () => {
     const { token } = useToken();
@@ -21,10 +22,6 @@ const Routes = () => {
             path: "/",
             element: < Navigate to='/login' />,
         },
-        // {
-        //     path: "/home",
-        //     element: <Home />,
-        // },
     ];
     const routesForAuthenticatedOnly = [
         {
@@ -48,14 +45,28 @@ const Routes = () => {
             element: <div>routes For Not Token</div>,
         },
     ];
+    //页面结构
+    const Layout = () => {
+        return (
+            <>
+                <Outlet />
+                <Foot />
+            </>
+        );
+    };
+    const LayoutForToken = [
+        {
+            path: "/",
+            element: <Layout />,
+            children: [
+                ...routesForPublic,
+                ...(!token ? routesForNotAuthenticatedOnly : []),
+                ...routesForAuthenticatedOnly,
+            ]
+        }
+    ];
 
-
-    const router = createHashRouter([
-        ...routesForPublic,
-        ...(!token ? routesForNotAuthenticatedOnly : []),
-        ...routesForAuthenticatedOnly,
-
-    ]);
+    const router = createHashRouter(LayoutForToken);
 
     return <RouterProvider router={router} />;
 
