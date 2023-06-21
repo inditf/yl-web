@@ -1,56 +1,29 @@
 import { Form, Input, Button, message } from 'antd';
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import ajax from "../../provider/ajax.jsx";
+import axios from "axios";
+import { useToken } from "../../provider/tokenProvider";
 import "./Login.less";
-import ajax from "../../ajax.js";
-import axios from 'axios';
-
-// import { useToken } from "../../provider/tokenProvider";
-import { useAuth } from "./authProvider";
-
-
-// const postUrl = 'http://127.0.0.1:7001/jwtlogin';
 
 const Login = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [userpassword, setUserpassword] = useState("");
-    // const [token, setToken] = useState("");
-    // const { } = useAuth();
-    // const [token, setToken] = useAuth(" ");
-    let token = null;
-    // const checkLogin = () => {
+    const { setToken } = useToken();
 
-    // }
     const onFinish = () => {
-        ajax("http://127.0.0.1:7001/jwtlogin", { username: username, password: userpassword }, 'POST')
+        ajax("/jwtlogin", { username: username, password: userpassword }, 'POST')
             .then(res => {
-                // setToken(res.token);
-                token = res.token
-                console.log("code is " + res.code + " token is " + token);
+                setToken(res.token);
+                if (res.code === 2000) {
+                    message.success("登录成功")
+                    navigate("/home", { replace: true });
+                }
+                else {
+                    message.error("账号或密码错误");
+                }
             })
-            .then(() => { console.log("token calibration") })
-            .then(() => {
-                axios.get("http://127.0.0.1:7001/jwtmessage",
-                    {
-                        headers:
-                        {
-                            'token': token,
-                        }
-                    })
-                    .then(res => {
-                        console.log("code is " + res.data.code + " " + res.data.msg)
-                        if (res.data.code === 2000) {
-                            message.success("登录成功")
-                            navigate("/home", { replace: true });
-                        }
-                        else {
-                            message.error("账号或密码错误");
-                        }
-                    });
-
-            });
-
     }
     return (
         <div className="auth">
@@ -75,14 +48,14 @@ const Login = () => {
                         className="sub-button"
                         type="primary"
                         htmlType="submit"
-                    // onClick={checkLogin}
                     >
                         登录
                     </Button>
                 </Form.Item>
                 <span>
                     <p className="tips">Don't you have an account </p>
-                    <Link to="/register">Register</Link>
+                    <Link to="/register">Register</Link>  <br />
+                    <Link to="/home">Home</Link>
                 </span>
             </Form >
         </div >

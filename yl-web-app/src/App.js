@@ -8,8 +8,9 @@ import {
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Home from "./pages/Home/Home";
-
 import Foot from "./compoent/Footer/Footer"
+import TokenProvider from "./provider/tokenProvider";
+import Routes from './routes/Routes';
 
 const Layout = () => {//
   return (
@@ -47,7 +48,10 @@ const router = createHashRouter([
 function App() {
   return (
     <div className="app">
-      <RouterProvider router={router} />
+      <TokenProvider >
+        {/* <RouterProvider router={router} /> */}
+        <Routes />
+      </TokenProvider>
     </div>
   );
 }

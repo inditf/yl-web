@@ -9,8 +9,11 @@
 *   在请求成功resolve时：resolve(response.data)
 *   * */
 
-import axios from 'axios'
-import { message } from 'antd'
+import axios from 'axios';
+import { message } from 'antd';
+
+axios.defaults.baseURL = "http://127.0.0.1:7001";
+
 export default function ajax(url, data = {}, type = 'GET') {
 
     return new Promise((resolve, reject) => {
