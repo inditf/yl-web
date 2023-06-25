@@ -29,7 +29,6 @@ export default function ajax(url, data = {}, type = 'GET') {
         //2 如果成功了，调用resolve（value）
         //3 如果失败了，不调用reject（resaon），而是显示异常信息
         promise.then(response => {
-            // console.log(response.data)
             resolve(response.data)
         }).catch(error => {
             message.error('请求出错了！' + error.message)
@@ -41,6 +40,6 @@ export default function ajax(url, data = {}, type = 'GET') {
 }
 
 //请求登录接口
-//ajax('/login',{username:'Tom',password:'123456'},'POST').then();
+//ajax('/jwtlogin',{username:'admin',password:'123456'},'POST').then();
 //添加用户
-//ajax('/manage/user/add',{username:'Tom',password:'123456',phone:'12345678'},'POST').then();
+//ajax('/user/add',{username:'admin',password:'123456'},'POST').then();

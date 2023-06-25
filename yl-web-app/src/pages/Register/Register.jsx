@@ -1,25 +1,35 @@
-import { Form, Input, Button } from 'antd';
-import { Link } from "react-router-dom";
+import { Form, Input, Button, message } from 'antd';
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import "./Register.less"
+import ajax from "../../provider/ajax.jsx";
 
 
 const Register = () => {
+    const navigate = useNavigate();
     const [username, setUserName] = useState("");
     const [useremail, setUserEmail] = useState("");
     const [userpassword, setUserPassword] = useState("");
     const [userrepassword, setUserRePassword] = useState("");
+
     const onFinish = () => {
-        setTimeout(() => {
-            console.log("username:", username, "password:", userpassword);
-        }, 2000);
+        ajax("/jwtcreatuser", { username: username, password: userpassword }, 'POST')
+            .then(res => {
+                if (res.code === 2000) {
+                    message.success(res.msg);
+                    navigate("/login", { replace: true });
+                }
+                else {
+                    message.error(res.msg);
+                }
+            }
+            )
     }
     return (
         <div className="auth">
             <h1>Register Page</h1>
             <Form
                 className="login-form"
-                initialValues={{ remember: true }}
                 onFinish={onFinish}
             >
                 <Form.Item
@@ -32,7 +42,6 @@ const Register = () => {
                         onChange={(e) => setUserName(e.target.value)}
                     />
                 </Form.Item>
-
 
                 <Form.Item
                     name="user-email"
@@ -53,7 +62,6 @@ const Register = () => {
                     />
                 </Form.Item>
 
-
                 <Form.Item
                     name="user-password"
                     // hasFeedback
@@ -70,7 +78,6 @@ const Register = () => {
                         onChange={(e) => setUserPassword(e.target.value)}
                     />
                 </Form.Item>
-
 
                 <Form.Item
                     name="user-repassword"
@@ -95,7 +102,6 @@ const Register = () => {
                     />
                 </Form.Item>
 
-
                 <Form.Item>
                     <Button
                         className="sub-button"
@@ -106,10 +112,9 @@ const Register = () => {
                     </Button>
                 </Form.Item>
 
-
                 <span>
                     <p className="tips">Do you have an account?</p>
-                    <Link to="/login">  Log in</Link>
+                    <Link to="/login">Log in</Link>
                 </span>
             </Form >
         </div >

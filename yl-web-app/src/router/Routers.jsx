@@ -11,23 +11,28 @@ const Routes = () => {
     // 路由配置
     const routesForPublic = [
         {
-            path: "/register",
-            element: <Register />,
+            path: "/",
+            element: < Navigate to='/login' />,
         },
         {
             path: "/login",
             element: <Login />,
         },
         {
-            path: "/",
-            element: < Navigate to='/login' />,
+            path: "/register",
+            element: <Register />,
         },
+
     ];
     const routesForAuthenticatedOnly = [
         {
             path: "/",
-            element: <ProtectedRoute />,
+            element: <ProtectedRoute />,//路由守卫
             children: [
+                {
+                    path: "/",
+                    element: < Navigate to='/home' />,
+                },
                 {
                     path: "/home",
                     element: <Home />,
@@ -66,7 +71,7 @@ const Routes = () => {
         }
     ];
 
-    const router = createHashRouter(LayoutForToken);
+    const router = createHashRouter(LayoutForToken);//路由创建
 
     return <RouterProvider router={router} />;
 
