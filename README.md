@@ -23,6 +23,7 @@ Register页:注册页面，成功跳转登录页
 [`React Router`](https://reactrouter.com/en/main)  
 [`Antd`](https://ant.design/docs/react/introduce)   
 [`Less`](https://less.bootcss.com/)   
-[`Axios`](https://axios-http.com/zh/docs/intro)
+[`Axios`](https://axios-http.com/zh/docs/intro)  
+[`Redux`](https://cn.redux.js.org/)
  
 

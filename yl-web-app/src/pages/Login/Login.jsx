@@ -19,6 +19,7 @@ const Login = () => {
                 if (res.code === 2000) {
                     setToken(res.token);
                     message.success(res.msg)
+                    localStorage.setItem('username', username);
                     navigate("/home", { replace: true });
                 }
                 else {

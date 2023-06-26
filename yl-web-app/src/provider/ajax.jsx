@@ -12,7 +12,7 @@
 import axios from 'axios';
 import { message } from 'antd';
 
-axios.defaults.baseURL = "http://127.0.0.1:7001";
+axios.defaults.baseURL = "http://36.133.28.96:7001";
 
 export default function ajax(url, data = {}, type = 'GET') {
 

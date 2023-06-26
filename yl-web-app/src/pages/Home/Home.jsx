@@ -118,7 +118,7 @@ const Home = () => {
                             <Form.Item name="userOldPassword" rules={[{ required: true, message: '请输入旧密码!' }]} >
                                 <Input.Password
                                     type="password"
-                                    placeholder="old password"
+                                    placeholder="current password"
                                     onChange={(e) => setUserpassword(e.target.value)}
                                 />
                             </Form.Item>
@@ -141,7 +141,7 @@ const Home = () => {
                         </Form>
                     </Col>
                     <Col className='comm-right'>
-                        <Author />
+                        <Author username={localStorage.getItem('username')} />
                         <Button className="log-out" onClick={getUser}>获取用户列表</Button>
                         <Table dataSource={userList}>
                             <Column title="User-Name" dataIndex="username" key="username" />
